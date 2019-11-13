@@ -1,0 +1,31 @@
+﻿<Window x:Class="ActividadPersonasPlantilla.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ActividadPersonasPlantilla"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Icon="32.ico">
+    <Window.Resources>
+        <local:SexoConverter x:Key="conversor"></local:SexoConverter>
+    </Window.Resources>
+    
+    <StackPanel Orientation="Vertical">
+        <ComboBox Margin="0,20" Width="200" Height="45" x:Name="EjemploCombobox" ItemsSource="{Binding}" SelectedValuePath="Id">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Height="30" Width="30">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding Foto}"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock Margin="10,5,10,0" Text="{Binding Nombre}" FontSize="13" FontWeight="Bold"></TextBlock>
+                        <Image Source="{Binding Sexo ,Converter={StaticResource conversor}}"></Image>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock HorizontalAlignment="Left" Text="El identificador del usuario seleccionado es: ""></TextBlock>
+    </StackPanel>
+</Window>
