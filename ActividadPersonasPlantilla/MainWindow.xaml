@@ -11,7 +11,7 @@
     </Window.Resources>
     
     <StackPanel Orientation="Vertical">
-        <ComboBox Margin="0,20" Width="200" Height="45" x:Name="EjemploCombobox" ItemsSource="{Binding}" SelectedValuePath="Id">
+        <ComboBox Margin="0,20" Width="200" Height="45" x:Name="EjemploCombobox" ItemsSource="{Binding}" SelectedValuePath="Id" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -26,6 +26,9 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Text="El identificador del usuario seleccionado es: ""></TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="El identificador del usuario seleccionado es:  "></TextBlock>
+        <TextBlock x:Name="textBlockID" HorizontalAlignment="Left" Text="{Binding ElementName=EjemploCombobox, Path=SelectedValue}"></TextBlock>
+        </StackPanel>
     </StackPanel>
 </Window>
